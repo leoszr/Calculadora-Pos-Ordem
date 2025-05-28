@@ -43,18 +43,22 @@ public class CalcPosFixService {
     }
 
     private boolean isOperador(String s) {
-        return s.equals("+") || s.equals("-") || s.equals("*") || s.equals("/");
-    }
+    return s.equals("+") || s.equals("-") || s.equals("*") || s.equals("/") || s.equals("%");
+}
 
-    private double aplicarOperador(double a, double b, String operador) {
-        switch (operador) {
-            case "+": return a + b;
-            case "-": return a - b;
-            case "*": return a * b;
-            case "/":
-                if (b == 0) throw new ArithmeticException("Divisão por zero.");
-                return a / b;
-            default: throw new IllegalArgumentException("Operador desconhecido: " + operador);
-        }
+private double aplicarOperador(double a, double b, String operador) {
+    switch (operador) {
+        case "+": return a + b;
+        case "-": return a - b;
+        case "*": return a * b;
+        case "/":
+            if (b == 0) throw new ArithmeticException("Divisão por zero.");
+            return a / b;
+        case "%":
+            if (b == 0) throw new ArithmeticException("Divisão por zero no módulo.");
+            return a % b;
+        default: throw new IllegalArgumentException("Operador desconhecido: " + operador);
     }
 }
+}
+

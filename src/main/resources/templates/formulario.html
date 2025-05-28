@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora Pós-Fixa</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Calculadora Pós-Fixa</h2>
+        <form action="/calcular" method="post">
+            <label for="expressao">Digite a expressão pós-fixa (tokens separados por espaço):</label>
+            <input type="text" id="expressao" name="expressao" placeholder="Ex: 3 4 + 2 * 7 /"
+                   th:value="${expressao != null ? expressao : ''}" required>
+            <button type="submit">Calcular</button>
+        </form>
+
+        <!-- Exibe o resultado, se houver -->
+        <div class="resultado" th:if="${resultado != null}">
+            Resultado: <span th:text="${resultado}"></span>
+        </div>
+
+        <!-- Exibe a mensagem de erro, se houver -->
+        <div class="erro" th:if="${erro != null}">
+            Erro: <span th:text="${erro}"></span>
+        </div>
+    </div>
+</body>
+</html>
